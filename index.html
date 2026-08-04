@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>عَبْقَرِيٌّ مِنْ أَبْنَاءِ كَيْرالا - PLUS TWO ARABIC UNIT 1 LESSON 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #00695C;
+        --primary-light: #26A69A;
+        --secondary: #2E7D32;
+        --accent: #FFB300;
+        --blue: #0288D1;
+        --purple: #6A1B9A;
+        --teal: #00897B;
+        --card-bg: #FFFFFF;
+        --text-color: #263238;
+        --shadow: 0 8px 20px rgba(0,0,0,0.12);
+        --radius: 20px;
+    }
+    * { box-sizing: border-box; user-select: none; -webkit-user-select: none; margin: 0; padding: 0; }
+    body {
+        background: linear-gradient(180deg, #E0F2F1 0%, #B2DFDB 50%, #FFFFFF 100%);
+        min-height: 100vh; overflow-x: hidden; color: var(--text-color); direction: rtl;
+        font-family: 'Manjari', 'Segoe UI', Tahoma, sans-serif;
+    }
+    .ar { font-family: 'Traditional Arabic','Scheherazade New','Amiri', serif; font-weight: 700; }
+    .ml { font-family: 'Manjari', sans-serif; font-weight: 700; }
+
+    #app { position: relative; z-index: 1; max-width: 1050px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; padding: 15px; }
+
+    header { background: rgba(255,255,255,0.97); padding: 12px 20px; border-radius: var(--radius); box-shadow: var(--shadow); display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+    .logo-area { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .logo-area h1 { font-size: 1.4rem; color: var(--primary); font-weight: 800; }
+    .logo-area .sub { font-size: 0.8rem; color: #004D40; font-family:'Manjari',sans-serif; font-weight:700; }
+    .logo-area span { font-size: 0.8rem; background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 12px; font-weight: bold; }
+    .stats-bar { display: flex; align-items: center; gap: 15px; background: #FFF9C4; padding: 8px 16px; border-radius: 30px; border: 2px solid #FBC02D; font-weight: bold; font-size: 1.05rem; }
+    .stat-item { display: flex; align-items: center; gap: 5px; }
+    .controls { display: flex; gap: 8px; }
+    .icon-btn { background: #FFF; border: 2px solid #E0E0E0; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.1rem; cursor: pointer; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+    .icon-btn:hover { transform: scale(1.1); }
+
+    .progress-container { width: 100%; background: rgba(255,255,255,0.6); height: 10px; border-radius: 10px; overflow: hidden; margin-bottom: 15px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+    .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg,#00695C,#26A69A); transition: width .4s ease; }
+
+    .screen { display: none; flex-direction: column; align-items: center; width: 100%; flex: 1; animation: fadeIn .3s ease-in-out; }
+    .screen.active { display: flex; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+    .home-card { background: rgba(255,255,255,0.95); border-radius: 25px; padding: 30px 20px; text-align: center; box-shadow: var(--shadow); width: 100%; max-width: 780px; margin: auto; border: 4px solid #FFF; }
+    .main-title { color: #00695C; font-size: 2.2rem; margin-bottom: 6px; }
+    .sub-title { color: #00897B; font-size: 1.35rem; margin-bottom: 8px; }
+    .author-tag { background: #E0F2F1; color: #004D40; display: inline-block; padding: 6px 18px; border-radius: 20px; font-size: 0.95rem; margin-bottom: 22px; font-weight: bold; }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; width: 100%; }
+    .btn-menu { padding: 16px 18px; border: none; border-radius: 20px; font-size: 1.1rem; font-weight: bold; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 0 rgba(0,0,0,0.2); text-shadow: 1px 1px 2px rgba(0,0,0,0.3); transition: all .2s; }
+    .btn-menu:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,0.2); }
+    .b1{background:linear-gradient(135deg,#00695C,#004D40);} .b2{background:linear-gradient(135deg,#2E7D32,#1B5E20);}
+    .b3{background:linear-gradient(135deg,#0288D1,#01579B);} .b4{background:linear-gradient(135deg,#6A1B9A,#4A148C);}
+    .b5{background:linear-gradient(135deg,#00897B,#004D40);} .b6{background:linear-gradient(135deg,#E65100,#BF360C);}
+    .b7{background:linear-gradient(135deg,#6D4C41,#3E2723);} .b8{background:linear-gradient(135deg,#455A64,#263238);}
+
+    .section-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; background: white; padding: 12px 20px; border-radius: 15px; box-shadow: var(--shadow); flex-wrap:wrap; gap:10px; }
+    .section-title { font-size: 1.35rem; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    .back-btn { background: linear-gradient(135deg,#546E7A,#37474F); color:white; border:none; padding:8px 20px; border-radius:20px; font-weight:bold; cursor:pointer; }
+
+    .content-box { background: rgba(255,255,255,0.97); border-radius: 22px; padding: 24px; box-shadow: var(--shadow); width: 100%; max-width: 900px; margin: 0 auto 20px; border: 3px solid #fff; }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 18px; width: 100%; padding-bottom: 20px; }
+    .word-card { background: white; border-radius: 20px; padding: 16px; text-align: center; box-shadow: var(--shadow); border: 3px solid #FFF; transition: all .3s; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
+    .word-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+    .word-card.playing { animation: pulseCard .6s infinite alternate; border-color: var(--secondary); background:#E8F5E9; }
+    @keyframes pulseCard { from{transform:scale(1);} to{transform:scale(1.05);} }
+    .card-svg-container { width: 90px; height: 90px; display:flex; justify-content:center; align-items:center; margin-bottom:10px; }
+    .card-svg-container svg { width:100%; height:100%; }
+    .word-arabic { font-size: 1.5rem; margin-bottom: 6px; color: #004D40; }
+    .word-meaning { font-size: 0.85rem; color:#444; margin-bottom:10px; font-family:'Manjari',sans-serif; font-weight:700; }
+    .replay-btn { background: #E0F2F1; color: #00695C; border: none; padding: 6px 14px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; cursor:pointer; }
+
+    .story-title { text-align:center; font-size:1.6rem; color:var(--primary); margin-bottom:16px; background:linear-gradient(90deg,#00695C,#00897B); display:inline-block; padding:8px 30px; border-radius:30px; color:#fff; }
+    .story-title-wrap{ text-align:center; width:100%; margin-bottom:18px;}
+    .story-para { background:#F5F5F5; border-right:5px solid var(--primary); padding:14px 18px; border-radius:14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .story-para p { font-size:1.3rem; line-height:2.2; flex:1; min-width:250px; }
+    .mini-play { background: var(--blue); color:white; border:none; width:42px; height:42px; border-radius:50%; cursor:pointer; font-size:1.1rem; flex-shrink:0; }
+    .read-all-btn { background: linear-gradient(135deg,#00695C,#004D40); color:white; border:none; padding:12px 30px; border-radius:25px; font-size:1.1rem; font-weight:bold; cursor:pointer; margin-bottom:18px; box-shadow:0 4px 10px rgba(0,105,92,.4); }
+    .video-btn { background: linear-gradient(135deg,#D32F2F,#C62828) !important; box-shadow:0 4px 10px rgba(211,47,47,.4) !important; }
+
+    .bio-card { background:#E0F2F1; border:2px solid #80CBC4; border-radius:18px; padding:20px; margin-top:20px; }
+    .bio-header { font-size:1.3rem; color:#004D40; font-weight:bold; margin-bottom:10px; }
+
+    .activity-block { background:#FFF8E1; border:2px solid #FFE082; border-radius:18px; padding:20px; margin-bottom:22px; width:100%; }
+    .activity-heading { color:#E65100; font-size:1.25rem; margin-bottom:14px; font-weight:bold; }
+    .activity-line { font-size:1.25rem; line-height:2.4; margin-bottom:10px; }
+    .fillbox { border:2px solid #90A4AE; border-radius:10px; padding:6px 14px; font-size:1.2rem; font-family:'Traditional Arabic','Scheherazade New',serif; font-weight:700; min-width:140px; text-align:center; background:white; }
+    select.fillbox { cursor:pointer; }
+    textarea.fillbox { width:100%; min-height:85px; font-size:1.2rem; resize:vertical; direction:rtl; text-align:right; }
+    .check-btn { background:var(--secondary); color:white; border:none; padding:8px 22px; border-radius:20px; font-weight:bold; cursor:pointer; margin-top:8px; }
+    .result-msg { font-weight:bold; margin-top:8px; font-size:1.05rem; }
+    .model-answer-box { background:#F3E5F5; border:2px solid #CE93D8; border-radius:14px; padding:14px 18px; margin-top:10px; font-size:1.2rem; line-height:2; }
+    .model-answer-label { font-family:'Manjari',sans-serif; font-weight:700; color:#6A1B9A; font-size:0.95rem; margin-bottom:6px; }
+
+    table.gtable { width:100%; border-collapse: collapse; background:white; border-radius:12px; overflow:hidden; margin-top:10px; }
+    .gtable th { background: var(--teal); color:white; padding:12px; font-size:1.1rem; }
+    .gtable td { padding:12px; text-align:center; border-bottom:1px solid #eee; font-size:1.25rem; }
+    .gtable input, .gtable select { font-size:1.2rem; padding:6px; border-radius:8px; border:2px solid #B0BEC5; text-align:center; width:90%; font-family:'Traditional Arabic','Scheherazade New',serif; font-weight:700;}
+
+    .game-box { background: rgba(255,255,255,0.95); border-radius: 25px; padding: 25px; box-shadow: var(--shadow); width: 100%; max-width: 750px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; border: 4px solid #FFF; }
+    .game-instruction { font-size: 1.15rem; color: #37474F; margin-bottom: 20px; text-align: center; background: #E0F2F1; padding: 8px 20px; border-radius: 20px; font-weight: bold; }
+    .g1-image-box { width: 160px; height: 160px; background: #F5F5F5; border-radius: 20px; display: flex; justify-content: center; align-items: center; margin-bottom: 22px; border: 3px solid #E0E0E0; padding: 10px; }
+    .options-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; width: 100%; max-width: 500px; }
+    .option-btn { background:#FFF; border:3px solid #80CBC4; padding:14px; border-radius:18px; font-size:1.4rem; font-weight:bold; color:#004D40; cursor:pointer; box-shadow:0 4px 0 #4DB6AC; }
+    .option-btn:hover { background:#E0F2F1; }
+    .option-btn.correct { background:#C8E6C9 !important; border-color:#4CAF50 !important; color:#2E7D32 !important; box-shadow:0 4px 0 #388E3C !important; }
+    .option-btn.wrong { background:#FFCDD2 !important; border-color:#F44336 !important; color:#C62828 !important; box-shadow:0 4px 0 #D32F2F !important; }
+    .match-container { display:flex; justify-content:space-between; width:100%; gap:18px; margin-bottom:18px; }
+    .match-column { display:flex; flex-direction:column; gap:14px; flex:1; }
+    .match-item { background:white; border:3px solid #CFD8DC; border-radius:15px; padding:10px; display:flex; align-items:center; justify-content:center; min-height:78px; cursor:pointer; }
+    .match-item:hover { border-color:var(--blue); background:#E3F2FD; }
+    .match-item.selected { border-color:var(--accent); background:#FFF8E1; }
+    .match-item.matched { border-color:var(--secondary); background:#E8F5E9; opacity:.6; pointer-events:none; }
+    .match-item .svg-thumb { width:56px; height:56px; }
+    .match-item .text-thumb { font-size:1.35rem; font-weight:bold; }
+    .missing-word-display { font-size:2.4rem; font-weight:bold; color:#00695C; background:#E0F2F1; padding:14px 36px; border-radius:20px; margin-bottom:22px; border:2px dashed #00897B; }
+    .letters-options { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+    .letter-btn { background:white; border:3px solid #81C784; width:64px; height:64px; border-radius:50%; font-size:1.7rem; font-weight:bold; color:#00695C; display:flex; justify-content:center; align-items:center; cursor:pointer; box-shadow:0 5px 0 #388E3C; }
+    .target-pic { width:110px; height:110px; margin-bottom:14px; }
+    .drop-slots { display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap; justify-content:center; }
+    .letter-slot { width:54px; height:54px; border:3px dashed #B0BEC5; background:#ECEFF1; border-radius:14px; display:flex; justify-content:center; align-items:center; font-size:1.6rem; font-weight:bold; }
+    .scrambled-letters { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .tile-btn { width:50px; height:50px; background:#FFE082; border:2px solid #FFB300; border-radius:12px; font-size:1.5rem; font-weight:bold; color:#E65100; display:flex; justify-content:center; align-items:center; cursor:pointer; box-shadow:0 4px 0 #FFA000; }
+
+    .quiz-q { background:white; border-radius:16px; padding:16px 20px; margin-bottom:16px; box-shadow:0 3px 10px rgba(0,0,0,.08); border-right:5px solid var(--primary); }
+    .quiz-q .qtext { font-size:1.25rem; margin-bottom:12px; font-weight:bold; }
+    .quiz-opts { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+    .quiz-opt { background:#F5F5F5; border:2px solid #E0E0E0; border-radius:12px; padding:10px; cursor:pointer; text-align:center; font-size:1.15rem; }
+    .quiz-opt.picked { border-color:var(--primary); background:#E0F2F1; }
+    .quiz-opt.correct-ans { border-color:#4CAF50; background:#C8E6C9; }
+    .quiz-opt.wrong-ans { border-color:#F44336; background:#FFCDD2; }
+    .submit-quiz-btn { background:linear-gradient(135deg,#00695C,#004D40); color:white; border:none; padding:14px 40px; border-radius:25px; font-size:1.2rem; font-weight:bold; cursor:pointer; margin-top:10px; box-shadow:0 4px 10px rgba(0,105,92,.4); }
+    .quiz-score-box { background:#FFF9C4; border:2px solid #FBC02D; border-radius:18px; padding:18px; text-align:center; font-size:1.3rem; font-weight:bold; margin-bottom:18px; }
+
+    table.vocab-table { width:100%; border-collapse:collapse; }
+    .vocab-table th { background:var(--primary); color:white; padding:10px; font-size:1.05rem; }
+    .vocab-table td { padding:10px; border-bottom:1px solid #eee; font-size:1.2rem; text-align:center; }
+    .vocab-table tr:nth-child(even){ background:#FAFAFA; }
+    .grammar-note { background:#E0F2F1; border-radius:14px; padding:16px 20px; margin-bottom:18px; font-size:1.15rem; line-height:1.8; }
+
+    .modal-overlay { position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,.7); z-index:100; display:none; justify-content:center; align-items:center; padding:20px; }
+    .modal-overlay.active { display:flex; }
+    .reward-card { background:white; border-radius:30px; padding:30px; text-align:center; max-width:480px; width:100%; box-shadow:0 20px 40px rgba(0,0,0,.3); border:5px solid #FFD54F; }
+    .reward-icon { font-size:3.6rem; margin-bottom:10px; }
+    .reward-title { color:#2E7D32; font-size:2rem; margin-bottom:8px; }
+    .reward-subtitle { color:#E65100; font-size:1.2rem; margin-bottom:18px; }
+    .primary-action-btn { background:linear-gradient(135deg,#00695C,#004D40); color:white; border:none; padding:12px 28px; border-radius:25px; font-size:1.1rem; font-weight:bold; cursor:pointer; }
+
+    .instructions-list { text-align:right; line-height:1.9; font-size:1.05rem; background:#F5F5F5; padding:20px; border-radius:15px; width:100%; font-family:'Manjari',sans-serif; font-weight:700; }
+
+    @media (max-width:600px){
+        .main-title{font-size:1.6rem;} .sub-title{font-size:1.15rem;}
+        .options-grid{grid-template-columns:1fr;} .match-container{flex-direction:column;}
+        .quiz-opts{grid-template-columns:1fr;}
+        .story-para p{font-size:1.15rem;}
+    }
+</style>
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="logo-area" onclick="showScreen('homeScreen')">
+            <div style="font-size:1.8rem;">🎓</div>
+            <div>
+                <h1 class="ar">اللغة العربية - الصف الثاني عشر</h1>
+                <span>PLUS TWO · UNIT 1 · LESSON 2</span>
+                <div class="sub ml">പ്ലസ് ടു അറേബിക് • യൂണിറ്റ് 1 • പാഠം 2</div>
+            </div>
+        </div>
+        <div class="stats-bar">
+            <div class="stat-item">⭐ <span id="valScore">0</span></div>
+            <div class="stat-item">❤️ <span id="valLives">3</span></div>
+            <div class="stat-item">🏆 <span id="valStars">0</span></div>
+        </div>
+        <div class="controls">
+            <button class="icon-btn" id="btnAudioToggle" onclick="toggleAudio()">🔊</button>
+            <button class="icon-btn" onclick="toggleFullscreen()">⛶</button>
+            <button class="icon-btn" onclick="showScreen('homeScreen')">🏠</button>
+        </div>
+    </header>
+
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+    <!-- HOME SCREEN -->
+    <div id="homeScreen" class="screen active">
+        <div class="home-card">
+            <h1 class="main-title ar">عَبْقَرِيٌّ مِنْ أَبْنَاءِ كَيْرالا</h1>
+            <h2 class="sub-title ml">Plus Two Arabic Unit 1 Lesson 2</h2>
+            <div class="author-tag ml">Prepared by : KATF STATE IT WIN</div>
+            <div class="menu-grid">
+                <button class="btn-menu b1" onclick="showScreen('readingScreen')">📖 Read Bio & Text</button>
+                <button class="btn-menu b2" onclick="showScreen('learnScreen')">🗂️ Learn Vocabulary</button>
+                <button class="btn-menu b6" onclick="showScreen('activitiesScreen')">📝 Textbook Activities</button>
+                <button class="btn-menu b3" onclick="showScreen('gamesMenuScreen')">🎮 Mini Games</button>
+                <button class="btn-menu b4" onclick="showScreen('quizScreen')">❓ Quiz Assessment (15)</button>
+                <button class="btn-menu b7" onclick="showScreen('vocabScreen')">📚 Full Glossary</button>
+                <button class="btn-menu b5" onclick="showScreen('grammarScreen')">🔤 Grammar: إنَّ وَأَخَوَاتُهَا</button>
+                <button class="btn-menu b8" onclick="showScreen('instructionsScreen')">ℹ️ Instructions</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- READING SCREEN -->
+    <div id="readingScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title ar">📖 عَبْقَرِيٌّ مِنْ أَبْنَاءِ كَيْرالا (Reading & Biography)</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="content-box">
+            <div class="story-title-wrap"><span class="story-title ar">الدَّكْتُور مُحْيِي الدِّينِ الأَلْوَائِي (١٩٢٥ - ١٩٩٦م)</span></div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:18px;">
+                <button class="read-all-btn" style="margin-bottom:0;" onclick="readAllStory()">🔊 Read Full Biography / Stop</button>
+                <button class="read-all-btn video-btn" style="margin-bottom:0;" onclick="watchLessonVideo()">🎬 Search Lesson Video</button>
+            </div>
+            <div id="textContainer"></div>
+
+            <!-- Novel Chemmeen Introduction Box (Page 15) -->
+            <div class="bio-card" style="background:#FFF3E0; border-color:#FFB74D; margin-top:16px;">
+                <div class="bio-header ar" style="color:#E65100;">📖 عَنْ رِوَايَةِ «تَشْمِين» (Chemmeen Novel)</div>
+                <div class="ar" style="line-height:2.1; font-size:1.15rem;">
+                    • <b>هَلْ تَعْرِفُونَ رِوَايَةَ «تَشْمِين»؟</b> هِيَ رِوَايَةٌ مَلَيَالِمِيَّةٌ مَشْهُورَةٌ لِلْكَاِتِبِ الكَيْرَالِيِّ «تَكَاذِي سِيفَاسَانْكَرَا بِلَاي».<br>
+                    • <b>مَنْ قَامَ بِتَرْجَمَتِهَا إِلَى اللُّغَةِ العَرَبِيَّةِ؟</b> قَامَ بِتَرْجَمَتِهَا الدَّكْتُورُ مُحْيِي الدِّينِ الأَلْوَائِي، مِمَّا سَاهَمَ فِي نَشْرِ الأَدَبِ المَلَيَالِمِيِّ فِي العَالَمِ العَرَبِيِّ.
+                </div>
+            </div>
+
+            <!-- Authored Works Box (Page 16) -->
+            <div class="bio-card" style="background:#E8EAF6; border-color:#9FA8DA; margin-top:16px;">
+                <div class="bio-header ar" style="color:#1A237E;">📚 أَهَمُّ مُؤَلَّفَاتِهِ وَبُحُوثِهِ (His Authored Works - Page 16)</div>
+                <div class="ar" style="line-height:2.2; font-size:1.15rem;">
+                    1. <b>الدَّعْوَةُ الإِسْلَامِيَّةُ وَتَطَوُّرُهَا فِي شِبْهِ القَارَّةِ الهِنْدِيَّةِ</b> (رسالة الدكتوراه - جامعة الأزهر).<br>
+                    2. <b>الأَدَبُ الهِنْدِيُّ المَعَاصِرُ</b>.<br>
+                    3. <b>الإِسْلَامُ وَقَضَايَا الإِنْسَانِيَّةِ</b>.<br>
+                    4. <b>تَشْمِين</b> (رواية مترجمة من المليالمية).<br>
+                    5. <b>النُّبُوَّةُ المُحَمَّدِيَّةُ وَمُفْتَرَيَاتُ المُسْتَشْرِقِينَ</b>.<br>
+                    6. <b>مُسَاهَمَةُ عُلَمَاءِ الهِنْدِ فِي خِدْمَةِ اللُّغَةِ العَرَبِيَّةِ وَآدَابِهَا</b>.<br>
+                    7. <b>الثَّقَافَةُ العَرَبِيَّةُ فِي شِبْهِ القَارَّةِ الهِنْدِيَّةِ</b>.<br>
+                    8. <i>Principles of Islam</i> & <i>The Essence of Islam</i> (باللغة الإنجليزية).
+                </div>
+            </div>
+
+            <div class="bio-card">
+                <div class="bio-header ar">مَنَاصِبُهُ وَأَعْمَالُهُ (His Positions & Achievements)</div>
+                <div class="ar" style="line-height:2.2; font-size:1.15rem;">
+                    • أُسْتَاذٌ فِي كُلِّيَةِ «رَوْضَةِ الْعُلُومِ» - كُلِّيَةِ الْبَاقِيَاتِ الصَّالِحَاتِ - وَجَامِعَةِ الأزْهَرِ الشَّرِيفِ بِمِصْرَ.<br>
+                    • مُذِيعٌ فِي إِذَاعَةِ عُمُومِ الْهِنْدِ (AIR).<br>
+                    • رَئِيسُ التَّحْرِيرِ لِمَجَلَّةِ «صَوْتِ الْهِنْدِ» الَّتِي تُصْدَرُ مِنْ سَفَارَةِ الْهِنْدِ بِمِصْرَ.<br>
+                    • رَئِيسٌ مُسْتَشَارٌ بِجَرِيدَةِ «الْخَلِيجِ الْيَوْمِ» بِقَطَر.<br>
+                    • مَنَاصِبُ عَالِيَةٌ بِالْجَامِعَةِ الإِسْلَامِيَّةِ فِي الْمَدِينَةِ الْمُنَوَّرَةِ.<br>
+                    • مُتَرْجِمُ رِوَايَةِ <b>«تَشْمِين» (Chemmeen)</b> لِلْكَاتِبِ تَكَاذِي سِيفَاسَانْكَرَا بِلَاي إِلَى اللُّغَةِ الْعَرَبِيَّةِ.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEARN WORDS -->
+    <div id="learnScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title ar">🗂️ نَتَعَلَّمُ الْمُفْرَدَاتِ (Learn Terms)</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="content-box">
+            <div class="cards-grid" id="learnCardsGrid"></div>
+        </div>
+    </div>
+
+    <!-- ACTIVITIES SCREEN -->
+    <div id="activitiesScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title ar">📝 الأَنْشِطَةُ الدِّرَاسِيَّةُ (Textbook Activities - Pages 17-18)</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="content-box" id="activitiesContainer"></div>
+    </div>
+
+    <!-- GAMES MENU -->
+    <div id="gamesMenuScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title ar">🎮 اِخْتَرْ لُعْبَةً (Choose a Game)</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="menu-grid" style="max-width:600px; margin:10px auto;">
+            <button class="btn-menu b1" onclick="launchGame(1)">1. Guess the Term</button>
+            <button class="btn-menu b2" onclick="launchGame(2)">2. Match Word & Meaning</button>
+            <button class="btn-menu b3" onclick="launchGame(3)">3. Find Missing Letter</button>
+            <button class="btn-menu b4" onclick="launchGame(4)">4. Unscramble Terms</button>
+        </div>
+    </div>
+
+    <div id="game1Screen" class="screen"><div class="game-box">
+        <div class="game-instruction ar">🎮 خَمِّنِ الْكَلِمَةَ الصَّحِيحَةَ!</div>
+        <div class="g1-image-box" id="g1ImgBox"></div>
+        <div class="options-grid" id="g1OptionsGrid"></div>
+    </div></div>
+
+    <div id="game2Screen" class="screen"><div class="game-box">
+        <div class="game-instruction ar">🔗 طَابِقْ بَيْنَ الصُّورَةِ وَالْكَلِمَةِ!</div>
+        <div class="match-container"><div class="match-column" id="g2PicsCol"></div><div class="match-column" id="g2WordsCol"></div></div>
+    </div></div>
+
+    <div id="game3Screen" class="screen"><div class="game-box">
+        <div class="game-instruction ar">🔍 جِدِ الْحَرْفَ النَّاقِصَ!</div>
+        <div class="g1-image-box" id="g3ImgBox"></div>
+        <div class="missing-word-display ar" id="g3WordDisplay"></div>
+        <div class="letters-options" id="g3LettersGrid"></div>
+    </div></div>
+
+    <div id="game4Screen" class="screen"><div class="game-box">
+        <div class="game-instruction ar">🧩 رَتِّبِ الْحُرُوفَ!</div>
+        <div class="target-pic" id="g4ImgBox"></div>
+        <div class="drop-slots" id="g4Slots"></div>
+        <div class="scrambled-letters" id="g4Tiles"></div>
+    </div></div>
+
+    <!-- QUIZ -->
+    <div id="quizScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title ar">❓ اِخْتَبَارٌ (Class 12 Assessment - 15 Questions)</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="content-box">
+            <div id="quizScoreBox" style="display:none;" class="quiz-score-box"></div>
+            <div id="quizContainer"></div>
+            <div style="text-align:center;"><button class="submit-quiz-btn" onclick="submitQuiz()">✅ Submit Assessment</button></div>
+        </div>
+    </div>
+
+    <!-- VOCAB -->
+    <div id="vocabScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title ar">📚 مُعْجَمُ الْمُفْرَدَاتِ (Glossary)</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="content-box">
+            <table class="vocab-table"><thead><tr><th class="ar">الكلمة / المصطلح</th><th>English Meaning</th><th>Malayalam</th></tr></thead><tbody id="vocabTableBody"></tbody></table>
+        </div>
+    </div>
+
+    <!-- GRAMMAR SCREEN -->
+    <div id="grammarScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title ar">🔤 أَنَّ وَإِنَّ وَأَخَوَاتُهَا (Grammar Rules - Page 17)</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="content-box">
+            <div class="grammar-note ml">
+                • <b>قَاعِدَةُ (إِنَّ وَأَخَوَاتُهَا):</b><br>
+                تَدْخُلُ إنَّ وَأَخَوَاتُهَا <b class="ar">(إِنَّ، أَنَّ، كَأَنَّ، لَكِنَّ، لَعَلَّ، لَيْتَ)</b> عَلَى الْجُمْلَةِ الاسْمِيَّةِ:<br>
+                - تَنْصِبُ المَبْتَدَأَ وَيُسَمَّى <b>اسْمَهَا (منصوب بالفتحة)</b>.<br>
+                - تَرْفَعُ الخَبَرَ وَيُسَمَّى <b>خَبَرَهَا (مرفوع بالضمة)</b>.<br>
+                «الْكَلِمَةُ الأُولَى بَعْدَ (إِنَّ وَأَخَوَاتِهَا) اسْمُهَا هِيَ مَنْصُوبَةٌ، وَالْكَلِمَةُ الثَّانِيَةُ خَبَرُهَا هِيَ مَرْفُوعَةٌ».
+            </div>
+
+            <h3 class="ar" style="margin:15px 0 10px; color:var(--primary);">تَدْرِيبٌ: حَدِّدِ الاسْمَ المَنْصُوبَ وَالخَبَرَ المَرْفُوعَ (Page 17)</h3>
+            <table class="gtable">
+                <thead><tr><th class="ar">الْجُمْلَةُ</th><th class="ar">الأَدَاةُ</th><th class="ar">اسْمُهَا (المنصوب)</th><th class="ar">خَبَرُهَا (المرفوع)</th></tr></thead>
+                <tbody>
+                    <tr><td class="ar">إِنَّ الصَّحَافَةَ لِسَانُ الشَّعْبِ</td><td>إِنَّ</td><td>الصَّحَافَةَ</td><td><input class="fillbox gpInp" data-ans="لسان"></td></tr>
+                    <tr><td class="ar">أَيْقَنْتُ أَنَّ الشَّدَائِدَ صَانِعَةُ الرِّجَالِ</td><td>أَنَّ</td><td>الشَّدَائِدَ</td><td><input class="fillbox gpInp" data-ans="صانعة"></td></tr>
+                    <tr><td class="ar">كَأَنَّ المُمَرِّضَةَ مَلَكٌ رَحِيمٌ</td><td>كَأَنَّ</td><td>المُمَرِّضَةَ</td><td><input class="fillbox gpInp" data-ans="ملك"></td></tr>
+                    <tr><td class="ar">البَيْتُ قَدِيمٌ لَكِنَّ الأَثَاثَ جَدِيدٌ</td><td>لَكِنَّ</td><td>الأَثَاثَ</td><td><input class="fillbox gpInp" data-ans="جديد"></td></tr>
+                    <tr><td class="ar">لَعَلَّ النَّصْرَ قَرِيبٌ</td><td>لَعَلَّ</td><td>النَّصْرَ</td><td><input class="fillbox gpInp" data-ans="قريب"></td></tr>
+                    <tr><td class="ar">لَيْتَ الشَّبَابَ رَاجِعٌ</td><td>لَيْتَ</td><td>الشَّبَابَ</td><td><input class="fillbox gpInp" data-ans="راجع"></td></tr>
+                </tbody>
+            </table>
+            <button class="check-btn" onclick="checkGrammarTable()">Check Answers</button>
+            <div class="result-msg" id="grammarResultMsg"></div>
+        </div>
+    </div>
+
+    <!-- INSTRUCTIONS -->
+    <div id="instructionsScreen" class="screen">
+        <div class="section-header">
+            <div class="section-title">ℹ️ Class 12 Student Instructions</div>
+            <button class="back-btn" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="content-box">
+            <div class="instructions-list">
+                <ul>
+                    <li>• 📖 <b>Read Bio & Text:</b> Learn about Dr. Muhyi-d-Din Al-Alwayi, translator of *Chemmeen* and prominent Arabic scholar from Kerala.</li>
+                    <li>• 🗂️ <b>Learn Vocabulary:</b> Master terms related to literature, broadcasting, journalism, and academic degrees.</li>
+                    <li>• 📝 <b>Textbook Activities:</b> Practice writing years in Arabic words, translating English sentences, and writing scholar paragraphs.</li>
+                    <li>• 🎮 <b>Mini Games:</b> 4 games designed for term matching and spelling drill.</li>
+                    <li>• ❓ <b>Quiz Assessment:</b> Test comprehension with 15 standard multiple-choice questions.</li>
+                    <li>• 🔤 <b>Grammar:</b> Identify Noun (*Ism*) and Predicate (*Khabar*) for *Inna and its sisters* (إنَّ وأخواتها).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="rewardModal">
+    <div class="reward-card">
+        <div class="reward-icon">🏅</div>
+        <h2 class="reward-title">مُمْتَاز! Outstanding! 🎉</h2>
+        <p class="reward-subtitle">You completed the activity for Lesson 2!</p>
+        <button class="primary-action-btn" onclick="closeRewardModal()">Continue</button>
+    </div>
+</div>
+
+<script>
+/* ============== LESSON 2 VOCABULARY DATABASE ============== */
+const VOCABULARY = [
+ { id:'riwaya', word:'رِوَايَةُ تَشْمِين', meaning:'Chemmeen Novel (തകഴിയുടെ "ചെമ്മീൻ" നോവൽ)', letters:['ر','و','ا','ي','ة'], missingLetter:'ر', missingDisplay:'ِ_ـوَايَةٌ',
+   svg:`<svg viewBox="0 0 100 100"><rect x="20" y="15" width="60" height="70" rx="6" fill="#00695C"/><rect x="25" y="20" width="50" height="60" rx="3" fill="#FFF"/><path d="M30,45 Q50,30 70,45" stroke="#00897B" stroke-width="4" fill="none"/><circle cx="50" cy="65" r="8" fill="#FFB300"/></svg>` },
+ { id:'mutarjim', word:'مُتَرْجِمٌ', meaning:'Translator (പരിഭാഷകൻ)', letters:['م','ت','ر','ج','م'], missingLetter:'م', missingDisplay:'ِ_ـتَرْجِمٌ',
+   svg:`<svg viewBox="0 0 100 100"><rect x="10" y="25" width="38" height="50" rx="5" fill="#0288D1"/><rect x="52" y="25" width="38" height="50" rx="5" fill="#2E7D32"/><text x="22" y="58" font-size="20" fill="#FFF">A</text><text x="62" y="58" font-size="20" fill="#FFF">ع</text></svg>` },
+ { id:'idhaa', word:'إِذَاعَةٌ', meaning:'Radio / Broadcast (റേഡിയോ / ആകാശവാണി)', letters:['إ','ذ','ا','ع','ة'], missingLetter:'إ', missingDisplay:'ِ_ـذَاعَةٌ',
+   svg:`<svg viewBox="0 0 100 100"><rect x="15" y="35" width="70" height="45" rx="8" fill="#5D4037"/><circle cx="35" cy="58" r="14" fill="#D7CCC8"/><line x1="30" y1="35" x2="15" y2="15" stroke="#3E2723" stroke-width="4"/><circle cx="70" cy="50" r="6" fill="#FFB300"/></svg>` },
+ { id:'safara', word:'سَفَارَةٌ', meaning:'Embassy (എംബസി / നയതന്ത്ര കാര്യാലയം)', letters:['س','ف','ا','ر','ة'], missingLetter:'س', missingDisplay:'ِ_ـفَارَةٌ',
+   svg:`<svg viewBox="0 0 100 100"><rect x="20" y="45" width="60" height="45" fill="#78909C"/><polygon points="50,15 15,45 85,45" fill="#37474F"/><rect x="42" y="60" width="16" height="30" fill="#263238"/><line x1="50" y1="15" x2="50" y2="5" stroke="#FFD54F" stroke-width="3"/></svg>` },
+ { id:'sahafa', word:'صَحَافَةٌ', meaning:'Journalism / Press (പത്രപ്രവർത്തനം)', letters:['ص','ح','ا','ف','ة'], missingLetter:'ص', missingDisplay:'ِ_ـحَافَةٌ',
+   svg:`<svg viewBox="0 0 100 100"><rect x="20" y="15" width="60" height="70" rx="4" fill="#ECEFF1" stroke="#455A64" stroke-width="3"/><line x1="30" y1="30" x2="70" y2="30" stroke="#37474F" stroke-width="4"/><line x1="30" y1="42" x2="70" y2="42" stroke="#78909C" stroke-width="3"/><line x1="30" y1="52" x2="60" y2="52" stroke="#78909C" stroke-width="3"/></svg>` },
+ { id:'jami' , word:'جَامِعُ الأَزْهَر', meaning:'Al-Azhar University (അൽ-അസ്ഹർ സർവ്വകലാശാല)', letters:['ج','ا','م','ع'], missingLetter:'ج', missingDisplay:'ِ_ـامِعُ الأَزْهَر',
+   svg:`<svg viewBox="0 0 100 100"><rect x="20" y="50" width="60" height="40" fill="#81C784"/><path d="M35,50 A15,15 0 0,1 65,50 Z" fill="#1B5E20"/><rect x="45" y="15" width="10" height="35" fill="#1B5E20"/><circle cx="50" cy="10" r="5" fill="#FFD54F"/></svg>` },
+ { id:'shahada', word:'شَهَادَةُ الدَّكْتُورَاه', meaning:'PhD Doctorate Degree (ഡോക്ടറേറ്റ് ബിരുദം)', letters:['ش','ه','ا','د','ة'], missingLetter:'ش', missingDisplay:'ِ_ـهَادَةٌ',
+   svg:`<svg viewBox="0 0 100 100"><rect x="15" y="20" width="70" height="55" rx="5" fill="#FFF8E1" stroke="#FFA000" stroke-width="3"/><circle cx="50" cy="75" r="12" fill="#E65100"/><path d="M42,85 L50,75 L58,85" stroke="#BF360C" stroke-width="3"/></svg>` },
+ { id:'thaqafa', word:'ثَقَافَةٌ', meaning:'Culture / Heritage (সংস്കാരം)', letters:['ث','ق','ا','ف','ة'], missingLetter:'ث', missingDisplay:'ِ_ـقَافَةٌ',
+   svg:`<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="35" fill="#80CBC4"/><path d="M30,50 L45,65 L70,35" stroke="#FFF" stroke-width="6" fill="none"/></svg>` }
+];
+
+/* Passages from Lesson 2 */
+const TEXT_PASSAGES = [
+ {role:'عَبْقَرِيٌّ مِنْ أَبْنَاءِ كَيْرَالَا', text:'الدَّكْتُورُ مُحْيِي الدِّينِ الأَلْوَائِي كَاتِبٌ مَشْهُورٌ وَمُدَرِّسٌ عَبْقَرِيٌّ مِنْ وِلَايَةِ كَيْرَالَا. وُلِدَ فِي الأَوَّلِ مِنْ يُونِيُو سَنَةَ ١٩٢٥م فِي قَرْيَةِ وَيلِيتُونَاد قَرِيبَةٍ مِنْ مَدِينَةِ «آلُوَا». وَكَانَ وَالِدُهُ الشَّيْخَ مَقَارَ المَوْلَوِي.'},
+ {role:'دِرَاسَتُهُ وَمُؤَهِّلَاتُهُ', text:'دَرَسَ اللُّغَةَ العَرَبِيَّةَ وَالعُلُومَ الدِّينِيَّةَ فِي كُلِّيَةِ دَارِ العُلُومِ بِوَازَاكِاد، ثُمَّ فِي كُلِّيَةِ البَاقِيَاتِ الصَّالِحَاتِ بِوِيلُورَ، وَحَازَ شَهَادَةَ «أَفْضَلِ الْعُلَمَاءِ» سَنَةَ ١٩٤٩م مِنْ جَامِعَةِ مَدْرَاس.'},
+ {role:'ارْتِحَالُهُ إِلَى مِصْرَ', text:'رَحَلَ إِلَى مِصْرَ سَنَةَ ١٩٥٠م لِيَلْتَحِقَ بِجَامِعِ الأَزْهَرِ الشَّرِيفِ، وَحَصَلَ عَلَى الدَّكْتُورَاه سَنَةَ ١٩٧١م حَوْلَ مَوْضُوعِ «الدَّعْوَةُ الإِسْلَامِيَّةُ وَتَطَوُّرُهَا فِي شِبْهِ الْقَارَّةِ الْهِنْدِيَّةِ».'},
+ {role:'تَرْجَمَةُ رِوَايَةِ «تَشْمِين»', text:'قَامَ الدَّكْتُور الأَلْوَائِي بِتَرْجَمَةِ الرِّوَايَةِ المَلَيَالِمِيَّةِ الْمَشْهُورَةِ «تَشْمِين» (Chemmeen) لِلْكَاتِبِ تَكَاذِي سِيفَاسَانْكَرَا بِلَاي إِلَى اللُّغَةِ العَرَبِيَّةِ، مِمَّا سَاهَمَ فِي نَشْرِ الأَدَبِ المَلَيَالِمِي فِي العَالَمِ العَرَبِيِّ.'},
+ {role:'وَفَاتُهُ وَأَثَرُهُ', text:'تُوفِّيَ الدَّكْتُورُ الأَلْوَائِي فِي ٢٣ يُولِيُو سَنَةَ ١٩٩٦م، تَاكِرًا خَزَانَةً كَبِيرَةً مِنَ الكُتُبِ وَالمَقَالَاتِ فِي العَرَبِيَّةِ وَالمَلَيَالِمِيَّةِ وَالإِنْجِلِيزِيَّةِ.'}
+];
+
+/* Glossary list */
+const VOCAB_LIST = [
+ ['عَبْقَرِيٌّ (ج) عَبَاقِرَةٌ','Genius','പ്രതിഭാശാലിയായ വ്യക്തി'],['رِوَايَةٌ (ج) رِوَايَاتٌ','Novel','നോവൽ'],
+ ['تَرْجَمَةٌ','Translation','പരിഭാഷ / തർജ്ജമ'],['مُذِيعٌ','Announcer / Broadcaster','അവതാരകൻ / അറിവുകാരൻ'],
+ ['صَحَافَةٌ','Journalism / Press','പത്രപ്രവർത്തനം'],['سَفَارَةٌ','Embassy','എംബസി'],
+ ['مُسْتَشَارٌ','Chief Advisor / Consultant','ഉപദേശകൻ'],['الدَّكْتُورَاه','Doctorate Degree (PhD)','ഡോക്ടറേറ്റ്'],
+ ['مُؤَلَّفَاتٌ','Authored Works / Books','കൃതികൾ / ഗ്രന്ഥങ്ങൾ'],['شِبْهُ القَارَّةِ','Subcontinent','ഉപഭൂഖണ്ഡം'],
+ ['تَوْثِيقُ العَلَاقَاتِ','Strengthening Relations','ബന്ധങ്ങൾ ദൃഢമാക്കൽ'],['المُسْتَشْرِقُونَ','Orientalists','പൗരസ്ത്യ വിചക്ഷണർ']
+];
+
+const LESSON_VIDEO_QUERY = "الدكتور محي الدين الألوائي عبقري من أبناء كيرالا الصف الثاني عشر اللغة العربية";
+function watchLessonVideo(){ window.open("https://www.youtube.com/results?search_query="+encodeURIComponent(LESSON_VIDEO_QUERY),'_blank'); }
+
+let state = { score:0, lives:3, stars:0, audioEnabled:true, activeGame:null, currentGameIndex:0, gameQueue:[], quizSubmitted:false };
+
+let audioCtx=null;
+function initAudio(){ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); }
+function playSound(type){
+  if(!state.audioEnabled) return; initAudio();
+  const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+  osc.connect(gain); gain.connect(audioCtx.destination);
+  const now=audioCtx.currentTime;
+  if(type==='correct'){ osc.type='sine'; osc.frequency.setValueAtTime(523.25,now); osc.frequency.exponentialRampToValueAtTime(783.99,now+0.3); gain.gain.setValueAtTime(0.3,now); gain.gain.exponentialRampToValueAtTime(0.01,now+0.4); osc.start(now); osc.stop(now+0.4); }
+  else if(type==='wrong'){ osc.type='sawtooth'; osc.frequency.setValueAtTime(220,now); osc.frequency.linearRampToValueAtTime(130,now+0.3); gain.gain.setValueAtTime(0.3,now); gain.gain.exponentialRampToValueAtTime(0.01,now+0.35); osc.start(now); osc.stop(now+0.35); }
+  else if(type==='click'){ osc.type='triangle'; osc.frequency.setValueAtTime(400,now); gain.gain.setValueAtTime(0.15,now); gain.gain.exponentialRampToValueAtTime(0.01,now+0.08); osc.start(now); osc.stop(now+0.08); }
+  else if(type==='fanfare'){ [523.25,659.25,783.99,1046.5].forEach((f,i)=>{ const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.connect(g); g.connect(audioCtx.destination); o.frequency.setValueAtTime(f, now+i*0.12); g.gain.setValueAtTime(0.2, now+i*0.12); g.gain.exponentialRampToValueAtTime(0.01, now+i*0.12+0.3); o.start(now+i*0.12); o.stop(now+i*0.12+0.3); }); }
+}
+
+function speakArabic(text, onend){
+  if(!state.audioEnabled) return;
+  if('speechSynthesis' in window){
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang='ar-SA'; u.rate=0.82;
+    const voices = window.speechSynthesis.getVoices();
+    const v = voices.find(v=>v.lang.startsWith('ar'));
+    if(v) u.voice = v;
+    if(onend) u.onend = onend;
+    window.speechSynthesis.speak(u);
+  }
+}
+function toggleAudio(){ state.audioEnabled=!state.audioEnabled; document.getElementById('btnAudioToggle').innerText = state.audioEnabled?'🔊':'🔇'; if(!state.audioEnabled) window.speechSynthesis.cancel(); }
+function toggleFullscreen(){ if(!document.fullscreenElement){ document.documentElement.requestFullscreen().catch(()=>{}); } else if(document.exitFullscreen){ document.exitFullscreen(); } }
+
+function showScreen(id){
+  playSound('click'); window.speechSynthesis.cancel();
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const t=document.getElementById(id); if(t) t.classList.add('active');
+  if(id==='learnScreen') renderLearnCards();
+  if(id==='readingScreen') renderStory();
+  if(id==='activitiesScreen') renderActivities();
+  if(id==='quizScreen') renderQuiz();
+  if(id==='vocabScreen') renderVocabTable();
+}
+function updateStatsUI(){
+  document.getElementById('valScore').innerText=state.score;
+  document.getElementById('valLives').innerText=state.lives;
+  document.getElementById('valStars').innerText=state.stars;
+  document.getElementById('progressBar').style.width = Math.min(100, state.score/2)+'%';
+}
+
+function renderStory(){
+  const c=document.getElementById('textContainer'); c.innerHTML='';
+  TEXT_PASSAGES.forEach((item)=>{
+    const div=document.createElement('div'); div.className='story-para';
+    div.innerHTML = `<p class="ar"><b>[${item.role}]</b> : ${item.text}</p><button class="mini-play" onclick="speakArabic(this.dataset.t)" data-t="${item.text}">🔊</button>`;
+    c.appendChild(div);
+  });
+}
+let storyReading=false;
+function readAllStory(){
+  if(storyReading){ window.speechSynthesis.cancel(); storyReading=false; return; }
+  storyReading=true; let i=0;
+  function next(){
+    if(i>=TEXT_PASSAGES.length || !storyReading){ storyReading=false; return; }
+    speakArabic(`${TEXT_PASSAGES[i].text}`, ()=>{ i++; next(); });
+  }
+  next();
+}
+
+function renderLearnCards(){
+  const grid=document.getElementById('learnCardsGrid'); grid.innerHTML='';
+  VOCABULARY.forEach(item=>{
+    const card=document.createElement('div'); card.className='word-card';
+    card.onclick=()=>{ card.classList.add('playing'); speakArabic(item.word); playSound('click'); setTimeout(()=>card.classList.remove('playing'),1200); };
+    card.innerHTML = `<div class="card-svg-container">${item.svg}</div><div class="word-arabic ar">${item.word}</div><div class="word-meaning ml">${item.meaning}</div><button class="replay-btn">🔊 Listen</button>`;
+    grid.appendChild(card);
+  });
+}
+
+function renderActivities(){
+  const c=document.getElementById('activitiesContainer'); c.innerHTML=`
+  <!-- Activity 1: Comprehension Q&A (Page 17) -->
+  <div class="activity-block">
+    <div class="activity-heading ar">1) نُجِيبُ عَنِ الأَسْئِلَةِ الآتِيَةِ (Page 17)</div>
+    <div class="activity-line ar">أ) أَيْنَ وُلِدَ الدَّكْتُور مُحْيِي الدِّينِ الأَلْوَائِي؟ <input class="fillbox" style="width:50%" placeholder="اكتب مكان الميلاد..."></div>
+    <div class="activity-line ar">ب) مِنْ أَيِّ جَامِعَةٍ حَازَ شَهَادَةَ الدَّكْتُورَاه؟ <input class="fillbox" style="width:50%" placeholder="اكتب اسم الجامعة..."></div>
+    <div class="activity-line ar">ج) أَيْنَ تُصْدَرُ مَجَلَّةُ «صَوْتِ الْهِنْدِ»؟ <input class="fillbox" style="width:50%" placeholder="اكتب الجهة التي تصدرها..."></div>
+    <button class="check-btn" style="background:var(--purple);" onclick="toggleModelAnswer('act1Model')">💡 Show Model Answers</button>
+    <div class="model-answer-box ar" id="act1Model" style="display:none;">
+      <div class="model-answer-label">✅ Model Answers:</div>
+      <div>أ) وُلِدَ فِي قَرْيَةِ «وَيلِيتُونَاد» قَرِيبَةٍ مِنْ مَدِينَةِ «آلُوَا» فِي كَيْرَالَا.</div>
+      <div>ب) حَازَ شَهَادَةَ الدَّكْتُورَاه مِنْ جَامِعِ الأَزْهَرِ الشَّرِيفِ بِمِصْرَ سَنَةَ 1971م.</div>
+      <div>ج) تُصْدَرُ مَجَلَّةُ «صَوْتِ الْهِنْدِ» مِنْ سَفَارَةِ الْهِنْدِ بِمِصْرَ.</div>
+    </div>
+  </div>
+
+  <!-- Activity 2: Writing Years in Arabic Words (Page 17) -->
+  <div class="activity-block">
+    <div class="activity-heading ar">2) نَكْتُبُ أَعْوَامَ الأَحْدَاثِ لَفْظًا (Page 17)</div>
+    <div class="activity-line ar">1925م (ولادته) : <span class="ar" style="color:var(--primary);">أَلْفٌ وَتِسْعُمِائَةٍ وَخَمْسٌ وَعِشْرُونَ</span></div>
+    <div class="activity-line ar">1950م (ارتحل إلى مصر) : <input class="fillbox yrInp" data-ans="ألف وتسعمائة وخمسون" style="width:60%" placeholder="اكتب العام لفظًا..."></div>
+    <div class="activity-line ar">1977م (توجه إلى البلاد العربية) : <input class="fillbox yrInp" data-ans="ألف وتسعمائة وسبعة وسبعون" style="width:60%" placeholder="اكتب العام لفظًا..."></div>
+    <div class="activity-line ar">1996م (انتقل إلى ذمة الله) : <input class="fillbox yrInp" data-ans="ألف وتسعمائة وستة وتسعون" style="width:60%" placeholder="اكتب العام لفظًا..."></div>
+    <button class="check-btn" onclick="checkYearsActivity()">Check Answers</button>
+    <button class="check-btn" style="background:var(--purple); margin-right:8px;" onclick="toggleModelAnswer('act2Model')">💡 Show Answer Key</button>
+    <div class="result-msg" id="yearsResultMsg"></div>
+    <div class="model-answer-box ar" id="act2Model" style="display:none;">
+      <div class="model-answer-label">✅ Arabic Word Form of Years:</div>
+      <div>• 1950م: أَلْفٌ وَتِسْعُمِائَةٍ وَخَمْسُونَ</div>
+      <div>• 1977م: أَلْفٌ وَتِسْعُمِائَةٍ وَسَبْعَةٌ وَسَبْعُونَ</div>
+      <div>• 1996م: أَلْفٌ وَتِسْعُمِائَةٍ وَسِتَّةٌ وَتِسْعُونَ</div>
+    </div>
+  </div>
+
+  <!-- Activity 3: English to Arabic Translation (Page 17) -->
+  <div class="activity-block">
+    <div class="activity-heading ar">3) نُتَرْجِمُ الفِقْرَةَ إِلَى اللُّغَةِ العَرَبِيَّةِ (Page 17)</div>
+    <div style="background:#FFF3E0; padding:12px; border-radius:12px; font-weight:bold; margin-bottom:12px; font-family:'Manjari',sans-serif; line-height:1.6;">
+      "This is Ali. He is my friend. Ali has two brothers and a sister. His father is a doctor and his mother is a teacher. They serve the people in the society."
+    </div>
+    <textarea class="fillbox" placeholder="اكتب الترجمة العربية هنا..."></textarea>
+    <button class="check-btn" style="background:var(--purple);" onclick="toggleModelAnswer('act3Model')">💡 Show Translation Key</button>
+    <div class="model-answer-box ar" id="act3Model" style="display:none;">
+      <div class="model-answer-label">✅ Arabic Translation:</div>
+      هٰذَا عَلِيٌّ. هُوَ صَدِيقِي. لِعَلِيٍّ أَخَوَانِ وَأُخْتٌ. وَالِدُهُ طَبِيبٌ وَوَالِدَتُهُ مُعَلِّمَةٌ. هُمَا يَخْدُمَانِ النَّاسَ فِي الْمُجْتَمَعِ.
+    </div>
+  </div>
+
+  <!-- Activity 4: Paragraph on Dr. Alwayi's Services (Page 18) -->
+  <div class="activity-block">
+    <div class="activity-heading ar">4) نُعِدُّ فِقْرَةً بَسِيطَةً عَنْ خِدْمَاتِ الدَّكْتُورِ مُحْيِي الدِّينِ الأَلْوَائِي لِلُّغَةِ العَرَبِيَّةِ (Page 18)</div>
+    <textarea class="fillbox" placeholder="اكتب الفقرة هنا..."></textarea>
+    <button class="check-btn" style="background:var(--purple);" onclick="toggleModelAnswer('act4Model')">💡 Show Model Paragraph</button>
+    <div class="model-answer-box ar" id="act4Model" style="display:none;">
+      <div class="model-answer-label">✅ Model Paragraph:</div>
+      الدَّكْتُورُ مُحْيِي الدِّينِ الأَلْوَائِي عَالِمٌ وَكَاِتِبٌ كَيْرَالِيٌّ بَارِزٌ خَدَمَ اللُّغَةَ العَرَبِيَّةَ خِدْمَةً جَلِيلَةً. عَمِلَ أُسْتَاذًا فِي جَامِعِ الأزْهَرِ بِمِصْرَ وَالْجَامِعَةِ الإِسْلَامِيَّةِ بِالْمَدِينَةِ الْمُنَوَّرَةِ، وَتَرْجَمَ رِوَايَةَ «تَشْمِين» إِلَى العَرَبِيَّةِ. كَمَا أَلَّفَ كُتُبًا كَثِيرَةً فِي الأَدَبِ وَالتَّارِيخِ وَالثَّقَافَةِ وَسَاهَمَ فِي تَوْثِيقِ العَلَاقَاتِ بَيْنَ الْهِنْدِ وَالْعَالَمِ الْعَرَبِيِّ.
+    </div>
+  </div>
+
+  <!-- Activity 5: Essay Guidance on Kerala Arabic Scholars (Page 18) -->
+  <div class="activity-block">
+    <div class="activity-heading ar">5) إِعْدَادُ مَقَالَةٍ عَنْ مُسَاهَمَةِ أَهْلِ كَيْرَالَا لِلُّغَةِ العَرَبِيَّةِ (Page 18)</div>
+    <div class="activity-line ar">اُكْتُبْ مَقَالَةً أَوْ فِقْرَةً عَنْ دَوْرِ «الدَّرْسِ المَسْجِدِيِّ»، وَ«القَاضِي مُحَمَّد» (صَاحِب الفَتْحِ المُبِين)، وَ«عَبْدِ القَادِر الوَكَمِي»:</div>
+    <textarea class="fillbox" placeholder="اكتب المقالة أو الفقرة هنا..."></textarea>
+    <button class="check-btn" style="background:var(--purple);" onclick="toggleModelAnswer('act5Model')">💡 Show Sample Essay</button>
+    <div class="model-answer-box ar" id="act5Model" style="display:none;">
+      <div class="model-answer-label">✅ Sample Essay Outline:</div>
+      لِأَهْلِ كَيْرَالَا دَوْرٌ كَبِيرٌ فِي خِدْمَةِ اللُّغَةِ العَرَبِيَّةِ وَالعُلُومِ الإِسْلَامِيَّةِ. كَانَ لِلـ«دَّرْسِ المَسْجِدِيِّ» أَثَرٌ عَظِيمٌ فِي تَنْجِيبِ العُلَمَاءِ كَمَا فِي مَسْجِدِ فَنَّانِ بِرِئَاسَةِ الشَّيْخِ زَيْنِ الدِّينِ الصَّغِيرِ. وَمِنْ أَبْرَزِ العُلَمَاءِ «القَاضِي مُحَمَّدٌ الَّذِي أَلَّفَ أَلْفِيَّةَ الفَتْحِ المُبِينِ»، وَ«عَبْدُ القَادِرِ الوَكَمِيُّ» الَّذِي اقْتَرَحَ عَلَى الحُكُومَةِ تَعْيِينَ أَسَاتِذَةِ العَرَبِيَّةِ فِي المَدَارِسِ الحُكُومِيَّةِ.
+    </div>
+  </div>
+  `;
+}
+
+function checkYearsActivity(){
+  const inps=document.querySelectorAll('.yrInp'); let correct=0;
+  inps.forEach(inp=>{
+    const val=inp.value.trim().replace(/\s+/g,' ');
+    const ans=inp.dataset.ans;
+    if(val.includes(ans) || val.includes(ans.replace('ألف','الف'))){
+      inp.style.borderColor='#4CAF50'; correct++;
+    } else {
+      inp.style.borderColor='#F44336';
+    }
+  });
+  const r=document.getElementById('yearsResultMsg');
+  r.style.color = correct===inps.length?'#2E7D32':'#C62828';
+  r.innerText = `Score: ${correct}/${inps.length} ${correct===inps.length?'🎉 Outstanding!':'— Check the model answers!'}`;
+  if(correct===inps.length){ state.score+=20; state.stars+=1; updateStatsUI(); playSound('correct'); }
+}
+
+function renderVocabTable(){
+  const tb=document.getElementById('vocabTableBody'); tb.innerHTML='';
+  VOCAB_LIST.forEach(v=>{ tb.innerHTML += `<tr><td class="ar">${v[0]}</td><td>${v[1]}</td><td class="ml">${v[2]}</td></tr>`; });
+}
+
+/* ===== GAMES ENGINE ===== */
+function launchGame(n){
+  state.activeGame=n; state.currentGameIndex=0;
+  state.gameQueue=[...VOCABULARY].sort(()=>Math.random()-0.5);
+  if(n===1) renderGame1(); else if(n===2) renderGame2(); else if(n===3) renderGame3(); else renderGame4();
+}
+function nextQuestion(){
+  state.currentGameIndex++;
+  if(state.currentGameIndex>=4 || state.currentGameIndex>=state.gameQueue.length){
+    state.stars+=1; updateStatsUI(); showRewardModal();
+  } else {
+    if(state.activeGame===1) renderGame1(); else if(state.activeGame===2) renderGame2(); else if(state.activeGame===3) renderGame3(); else renderGame4();
+  }
+}
+function handleAnswer(isCorrect, el){
+  if(isCorrect){ state.score+=10; playSound('correct'); if(el) el.classList.add('correct'); updateStatsUI(); setTimeout(nextQuestion,900); }
+  else { playSound('wrong'); if(el) el.classList.add('wrong'); state.lives--; updateStatsUI(); if(state.lives<=0){ setTimeout(()=>{ alert('Game Over! Try again.'); showScreen('homeScreen'); state.lives=3; updateStatsUI(); },500); } }
+}
+function renderGame1(){
+  showScreen('game1Screen');
+  const item=state.gameQueue[state.currentGameIndex];
+  document.getElementById('g1ImgBox').innerHTML=item.svg;
+  const options=[item.word];
+  while(options.length<4){ const r=VOCABULARY[Math.floor(Math.random()*VOCABULARY.length)].word; if(!options.includes(r)) options.push(r); }
+  options.sort(()=>Math.random()-0.5);
+  const grid=document.getElementById('g1OptionsGrid'); grid.innerHTML='';
+  options.forEach(opt=>{ const btn=document.createElement('button'); btn.className='option-btn ar'; btn.innerText=opt;
+    btn.onclick=()=>{ speakArabic(opt); handleAnswer(opt===item.word, btn); }; grid.appendChild(btn); });
+}
+let g2SelPic=null,g2SelWord=null,g2Matches=0;
+function renderGame2(){
+  showScreen('game2Screen'); g2SelPic=null; g2SelWord=null; g2Matches=0;
+  const items=state.gameQueue.slice(state.currentGameIndex, state.currentGameIndex+3);
+  const shuffledWords=[...items].sort(()=>Math.random()-0.5);
+  const pc=document.getElementById('g2PicsCol'), wc=document.getElementById('g2WordsCol'); pc.innerHTML=''; wc.innerHTML='';
+  items.forEach(item=>{ const d=document.createElement('div'); d.className='match-item'; d.dataset.id=item.id;
+    d.innerHTML=`<div class="svg-thumb">${item.svg}</div>`;
+    d.onclick=()=>{ playSound('click'); document.querySelectorAll('#g2PicsCol .match-item').forEach(e=>e.classList.remove('selected')); d.classList.add('selected'); g2SelPic=item.id; checkMatch(); };
+    pc.appendChild(d); });
+  shuffledWords.forEach(item=>{ const d=document.createElement('div'); d.className='match-item'; d.dataset.id=item.id;
+    d.innerHTML=`<div class="text-thumb ar">${item.word}</div>`;
+    d.onclick=()=>{ speakArabic(item.word); document.querySelectorAll('#g2WordsCol .match-item').forEach(e=>e.classList.remove('selected')); d.classList.add('selected'); g2SelWord=item.id; checkMatch(); };
+    wc.appendChild(d); });
+}
+function checkMatch(){
+  if(g2SelPic && g2SelWord){
+    if(g2SelPic===g2SelWord){
+      playSound('correct'); state.score+=10; g2Matches++;
+      const p=document.querySelector(`#g2PicsCol .match-item[data-id="${g2SelPic}"]`), w=document.querySelector(`#g2WordsCol .match-item[data-id="${g2SelWord}"]`);
+      if(p) p.classList.add('matched'); if(w) w.classList.add('matched');
+      g2SelPic=null; g2SelWord=null; updateStatsUI();
+      if(g2Matches>=3) setTimeout(nextQuestion,900);
+    } else {
+      playSound('wrong'); state.lives--; updateStatsUI();
+      const p=document.querySelector('#g2PicsCol .selected'), w=document.querySelector('#g2WordsCol .selected');
+      if(p) p.classList.add('wrong'); if(w) w.classList.add('wrong');
+      setTimeout(()=>{ if(p) p.classList.remove('selected','wrong'); if(w) w.classList.remove('selected','wrong'); g2SelPic=null; g2SelWord=null; },600);
+    }
+  }
+}
+function renderGame3(){
+  showScreen('game3Screen'); const item=state.gameQueue[state.currentGameIndex];
+  document.getElementById('g3ImgBox').innerHTML=item.svg;
+  document.getElementById('g3WordDisplay').innerText=item.missingDisplay;
+  const opts=['ر','م','س','ص','ج','ش']; const shuffled=[...new Set([item.missingLetter,...opts])].sort(()=>Math.random()-0.5).slice(0,4);
+  if(!shuffled.includes(item.missingLetter)) shuffled[0]=item.missingLetter;
+  const grid=document.getElementById('g3LettersGrid'); grid.innerHTML='';
+  shuffled.forEach(l=>{ const btn=document.createElement('button'); btn.className='letter-btn ar'; btn.innerText=l;
+    btn.onclick=()=>{ speakArabic(l); handleAnswer(l===item.missingLetter, btn); }; grid.appendChild(btn); });
+}
+let g4Letters=[];
+function renderGame4(){
+  showScreen('game4Screen'); const item=state.gameQueue[state.currentGameIndex]; g4Letters=[];
+  document.getElementById('g4ImgBox').innerHTML=item.svg;
+  const slotsDiv=document.getElementById('g4Slots'); slotsDiv.innerHTML='';
+  item.letters.forEach(()=>{ const s=document.createElement('div'); s.className='letter-slot'; slotsDiv.appendChild(s); });
+  const scrambled=[...item.letters].sort(()=>Math.random()-0.5);
+  const tilesDiv=document.getElementById('g4Tiles'); tilesDiv.innerHTML='';
+  scrambled.forEach(l=>{ const t=document.createElement('div'); t.className='tile-btn ar'; t.innerText=l;
+    t.onclick=()=>{ if(t.style.visibility==='hidden') return; speakArabic(l); playSound('click');
+      g4Letters.push(l); t.style.visibility='hidden';
+      const slots=document.querySelectorAll('.letter-slot'); slots[g4Letters.length-1].innerText=l;
+      if(g4Letters.length===item.letters.length){ const ok=g4Letters.join('')===item.letters.join(''); handleAnswer(ok,null); } };
+    tilesDiv.appendChild(t); });
+}
+function showRewardModal(){ playSound('fanfare'); document.getElementById('rewardModal').classList.add('active'); }
+function closeRewardModal(){ document.getElementById('rewardModal').classList.remove('active'); showScreen('homeScreen'); }
+
+/* ===== QUIZ (15 MCQs for Class 12 Lesson 2) ===== */
+const QUIZ = [
+ {q:'مَنْ هُوَ مُتَرْجِمُ رِوَايَةِ "تَشْمِين" (Chemmeen) إِلَى اللُّغَةِ الْعَرَبِيَّةِ؟', opts:['الدَّكْتُورُ مُحْيِي الدِّينِ الأَلْوَائِي','ن. ك. أَحْمَدُ الْمَوْلَوِي','الْقَاضِي مُحَمَّدٌ','عَبْدُ الْقَادِرِ الْوَكَمِيُّ'], ans:0},
+ {q:'أَيْنَ وُلِدَ الدَّكْتُورُ مُحْيِي الدِّينِ الأَلْوَائِي؟', opts:['فِي قَرْيَةِ وَيلِيتُونَاد قَرِيبَةٍ مِنْ آلُوَا','فِي كَالِيكُوت','فِي تَلَاشِيرِي','فِي كَنُور'], ans:0},
+ {q:'فِي أَيِّ سَنَةٍ حَصَلَ الأَلْوَائِي عَلَى الدَّكْتُورَاه مِنْ جَامِعِ الأَزْهَرِ؟', opts:['١٩٧١م','١٩٥٠م','١٩٤٩م','١٩٩٦م'], ans:0},
+ {q:'مَا هُوَ عُنْوَانُ رِسَالَةِ الدَّكْتُورَاه لِلأَلْوَائِي؟', opts:['الدَّعْوَةُ الإِسْلَامِيَّةُ وَتَطَوُّرُهَا فِي شِبْهِ الْقَارَّةِ الْهِنْدِيَّةِ','الأَدَبُ المَلَيَالِمِيُّ','تَارِيخُ كَيْرَالَا','الفَتْحُ المُبِينُ'], ans:0},
+ {q:'مَا هِيَ الْمَجَلَّةُ الَّتِي كَانَ الأَلْوَائِي رَئِيسَ تَحْرِيرِهَا فِي سَفَارَةِ الْهِنْدِ بِمِصْرَ؟', opts:['صَوْتُ الْهِنْدِ','الْمَدِينَةُ','الْخَلِيجُ الْيَوْمُ','الرِّسَالَةُ'], ans:0},
+ {q:'كِتَابَةُ الْعَامِ 1950م بِالْحُرُوفِ الْعَرَبِيَّةِ هِيَ:', opts:['أَلْفٌ وَتِسْعُمِائَةٍ وَخَمْسُونَ','أَلْفٌ وَتِسْعُمِائَةٍ وَعِشْرُونَ','أَلْفٌ وَتِسْعُمِائَةٍ وَخَمْسٌ','أَلْفٌ وَتِسْعُمِائَةٍ وَسِتَّةٌ'], ans:0},
+ {q:'عَمَلُ إنَّ وَأَخَوَاتِهَا فِي الْجُمْلَةِ الاسْمِيَّةِ هُوَ:', opts:['تَنْصِبُ المَبْتَدَأَ وَتَرْفَعُ الخَبَرَ','تَرْفَعُ المَبْتَدَأَ وَتَنْصِبُ الخَبَرَ','تَجْزِمُ الفِعْلَ','تَجُرُّ الاسْمَ'], ans:0},
+ {q:'فِي جُمْلَةِ "إِنَّ الصَّحَافَةَ لِسَانُ الشَّعْبِ"، اسْمُ إِنَّ هُوَ:', opts:['الصَّحَافَةَ','لِسَانُ','الشَّعْبِ','إِنَّ'], ans:0},
+ {q:'فِي جُمْلَةِ "لَعَلَّ النَّصْرَ قَرِيبٌ"، خَبَرُ لَعَلَّ هُوَ:', opts:['قَرِيبٌ','النَّصْرَ','لَعَلَّ','لا يُوجَدُ'], ans:0},
+ {q:'مَنْ هُوَ صَاحِبُ مَنْظُومَةِ "الفَتْحُ المُبِينُ" فِي كَالِيكُوت؟', opts:['الْقَاضِي مُحَمَّدُ بْنُ عَبْدِ الْعَزِيزِ','الذَّهَبِيُّ','مُحْيِي الدِّينِ الأَلْوَائِي','زين الدين الصغير'], ans:0},
+ {q:'مَنْ هُوَ العَالِمُ الَّذِي اقْتَرَحَ تَعْيِينَ أَسَاتِذَةِ العَرَبِيَّةِ فِي المَدَارِسِ الحُكُومِيَّةِ؟', opts:['عَبْدُ الْقَادِرِ الْوَكَمِيُّ','مُحْيِي الدِّينِ الأَلْوَائِي','أَحْمَدُ الْمَوْلَوِي','قَاضِي كَالِيكُوت'], ans:0},
+ {q:'تُرْجِمَتْ رِوَايَةُ "تَشْمِين" لِلْكَاتِبِ:', opts:['تَكَاذِي سِيفَاسَانْكَرَا بِلَاي','بَشِير','بُونُكُنَّام','عُثْمَان'], ans:0},
+ {q:'فِي أَيِّ سَنَةٍ تُوُفِّيَ الدَّكْتُورُ مُحْيِي الدِّينِ الأَلْوَائِي؟', opts:['١٩٩٦م','١٩٧١م','١٩٨١م','٢٠٠٧م'], ans:0},
+ {q:'"This is Ali. He is my friend" تَرْجَمَتُهَا الصَّحِيحَةُ:', opts:['هٰذَا عَلِيٌّ. هُوَ صَدِيقِي','عَلِيٌّ طَبِيبٌ','هٰذَا أَحْمَدُ','عَلِيٌّ ذَهَبَ'], ans:0},
+ {q:'"إِنَّ الشَّدَائِدَ صَانِعَةُ الرِّجَالِ" - حَرَكَةُ اسْمِ إِنَّ هِيَ:', opts:['الفَتْحَةُ (الشَّدَائِدَ)','الضَّمَّةُ','الكَسْرَةُ','السُّكُونُ'], ans:0}
+];
+
+function renderQuiz(){
+  state.quizSubmitted=false;
+  document.getElementById('quizScoreBox').style.display='none';
+  const c=document.getElementById('quizContainer'); c.innerHTML='';
+  QUIZ.forEach((item,qi)=>{
+    const qd=document.createElement('div'); qd.className='quiz-q';
+    qd.innerHTML = `<div class="qtext ar">${qi+1}. ${item.q}</div><div class="quiz-opts" id="qopts${qi}"></div>`;
+    c.appendChild(qd);
+    const od=qd.querySelector('#qopts'+qi);
+    item.opts.forEach((opt,oi)=>{
+      const b=document.createElement('div'); b.className='quiz-opt ar'; b.innerText=opt; b.dataset.qi=qi; b.dataset.oi=oi;
+      b.onclick=()=>{ if(state.quizSubmitted) return; document.querySelectorAll(`#qopts${qi} .quiz-opt`).forEach(e=>e.classList.remove('picked')); b.classList.add('picked'); playSound('click'); };
+      od.appendChild(b);
+    });
+  });
+}
+
+function submitQuiz(){
+  if(state.quizSubmitted) return; state.quizSubmitted=true;
+  let score=0;
+  QUIZ.forEach((item,qi)=>{
+    const opts=document.querySelectorAll(`#qopts${qi} .quiz-opt`);
+    const picked=document.querySelector(`#qopts${qi} .picked`);
+    if(picked && parseInt(picked.dataset.oi)===item.ans) score++;
+    opts.forEach(o=>{ if(parseInt(o.dataset.oi)===item.ans) o.classList.add('correct-ans'); else if(o.classList.contains('picked')) o.classList.add('wrong-ans'); });
+  });
+  state.score += score*10; state.stars += (score>=12?2:1); updateStatsUI();
+  const box=document.getElementById('quizScoreBox'); box.style.display='block';
+  box.innerHTML = `🏆 Score: ${score} / 15 ${score>=12?'— Outstanding Mastery! 🎉':score>=8?'— Good Job! 👍':'— Review and Practice! 💪'}`;
+  playSound(score>=12?'fanfare':'correct');
+}
+
+window.onload=function(){ updateStatsUI(); if('speechSynthesis' in window){ window.speechSynthesis.getVoices(); } };
+</script>
+<!-- ... existing code -->
